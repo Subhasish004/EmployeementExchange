@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Employer Login</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" >Employement Exchange Portal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                 <a class="navbar-brand" th:href="@{/admin/index}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/candidates/login}">Candidate Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/candidates/create}">Candidate Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/employer/login}">Employer Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/login}">Admin Login</a>
+            </li>
+            <!-- Add more nav items as needed -->
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container mt-5">
+    <h2>Employer Login</h2>
+    <!-- Employer login form -->
+    <form th:action="@{/employer/authenticate}" method="post" th:object="${employer}">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="emailId" th:field="*{emailId}" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" th:field="*{password}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

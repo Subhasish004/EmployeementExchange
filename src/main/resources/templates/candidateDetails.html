@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Candidate Details</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<a class="navbar-brand">Employement Exchange Portal</a>   
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/candidates/details}">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/candidates/edit}">Edit Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/candidates/apply}">Apply for Jobs</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" th:href="@{/candidates/myJobs}">My Applied Jobs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/candidates/logout}">Logout</a>
+            </li>
+            <!-- Add more nav items as needed -->
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h2>Candidate Details</h2>
+    <div th:if="${candidate != null}">
+        <p><strong>Candidate Name:</strong> <span th:text="${candidate.candidateName}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${candidate.emailId}"></span></p>
+        <p><strong>Date of Birth:</strong> <span th:text="${candidate.dob}"></span></p>
+        <p><strong>Contact Number:</strong> <span th:text="${candidate.contactNumber}"></span></p>
+        <h4>Address:</h4>
+        <p><strong>Plot Number:</strong> <span th:text="${candidate.address.plotNumber}"></span></p>
+        <p><strong>Lane Number:</strong> <span th:text="${candidate.address.laneNumber}"></span></p>
+        <p><strong>Street Name:</strong> <span th:text="${candidate.address.streetName}"></span></p>
+        <p><strong>Pin Code:</strong> <span th:text="${candidate.address.pinCode}"></span></p>
+        <p><strong>City:</strong> <span th:text="${candidate.address.city}"></span></p>
+        <p><strong>State:</strong> <span th:text="${candidate.address.state}"></span></p>
+        <p><strong>Country:</strong> <span th:text="${candidate.address.country}"></span></p>
+        <h4>Qualification:</h4>
+        <p><strong>Course Name:</strong> <span th:text="${candidate.qualification.courseName}"></span></p>
+        <p><strong>Institute Name:</strong> <span th:text="${candidate.qualification.instituteName}"></span></p>
+        <p><strong>Year of Passing:</strong> <span th:text="${candidate.qualification.yearOfPassing}"></span></p>
+        <p><strong>Full Mark:</strong> <span th:text="${candidate.qualification.fullMark}"></span></p>
+        <p><strong>Mark Secured:</strong> <span th:text="${candidate.qualification.markSecured}"></span></p>
+        <p><strong>Percentage:</strong> <span th:text="${candidate.qualification.percentage}"></span></p>
+    </div>
+    <div th:unless="${candidate != null}">
+        <p>Candidate not found</p>
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

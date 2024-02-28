@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Apply for Jobs</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<a class="navbar-brand">Employement Exchange Portal</a>   
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/candidates/details}">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/candidates/edit}">Edit Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/candidates/apply}">Apply for Jobs</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" th:href="@{/candidates/myJobs}">My Applied Jobs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/candidates/logout}">Logout</a>
+            </li>
+            <!-- Add more nav items as needed -->
+        </ul>
+    </div>
+</nav>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Job List</h2>
+
+    <!-- Display list of jobs -->
+    <div class="row">
+        <!-- Iterate over the list of jobs and display each job as a card -->
+        <div th:each="job : ${jobs}" class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 th:text="${job.jobName}"></h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><strong>Company:</strong> <span th:text="${job.companyName}"></span></p>
+                    <p class="card-text"><strong>Location:</strong> <span th:text="${job.location}"></span></p>
+                    <p class="card-text"><strong>Status:</strong> <span th:text="${job.status}"></span></p>
+                    <p class="card-text"><strong>Job Role:</strong> <span th:text="${job.jobRole}"></span></p>
+                    <p class="card-text"><strong>Job Specification:</strong> <span th:text="${job.specification}"></span></p>
+                    <p class="card-text"><strong>Eligibility:</strong> <span th:text="${job.eligibility}"></span></p>
+                    <p class="card-text"><strong>Salary:</strong> <span th:text="${job.salary}"></span></p>
+                    <p class="card-text"><strong>Total Vacancy:</strong> <span th:text="${job.totalVacancy}"></span></p>
+                   
+                    <form th:action="@{/candidates/apply}" method="post">
+                    <input type="hidden" name="jobId" th:value="${job.jobId}" />
+                    <button type="submit" class="btn btn-primary">Apply</button>
+                	</form>
+                    
+                    <!-- Add more fields as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+<div class="container mt-5">
+    <h2>Available Jobs</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Job Name</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Eligibility</th>
+            <th>Salary</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        Loop through the list of jobs
+        <tr th:each="job : ${jobs}">
+            <td th:text="${job.jobName}"></td>
+            <td th:text="${job.companyName}"></td>
+            <td th:text="${job.location}"></td>
+            <td th:text="${job.eligibility}"></td>
+            <td th:text="${job.salary}"></td>
+            <td>
+                Add a button to apply for the job
+                <form th:action="@{/candidates/apply}" method="post">
+                    <input type="hidden" name="jobId" th:value="${job.jobId}" />
+                    <button type="submit" class="btn btn-primary">Apply</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+ -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

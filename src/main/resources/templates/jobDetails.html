@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Job Details</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<a class="navbar-brand">Employement Exchange Portal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/employer/dashboard}">Dashboard</a>
+            </li>
+           
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/employer/postJob}">Post Job</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/employer/logout}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Job Details</h2>
+    <!-- Display Job Details Here -->
+    <div class="card">
+                <div class="card-header">
+                    <h5 th:text="${jobDetails.jobName}"></h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><strong>Company:</strong> <span th:text="${jobDetails.companyName}"></span></p>
+                    <p class="card-text"><strong>Location:</strong> <span th:text="${jobDetails.location}"></span></p>
+                    <p class="card-text"><strong>Status:</strong> <span th:text="${jobDetails.status}"></span></p>
+                    <p class="card-text"><strong>Job Role:</strong> <span th:text="${jobDetails.jobRole}"></span></p>
+                    <p class="card-text"><strong>Job Specification:</strong> <span th:text="${jobDetails.specification}"></span></p>
+                    <p class="card-text"><strong>Eligibility:</strong> <span th:text="${jobDetails.eligibility}"></span></p>
+                    <p class="card-text"><strong>Salary:</strong> <span th:text="${jobDetails.salary}"></span></p>
+                    <p class="card-text"><strong>Total Vacancy:</strong> <span th:text="${jobDetails.totalVacancy}"></span></p>
+                    <!-- Add more fields as needed -->
+                </div>
+            </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
